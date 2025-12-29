@@ -131,7 +131,7 @@ This sheet contains the core decision matrix used for MCDM analyses.
 **Additional information:**
 - Each criterion is explicitly classified as a *benefit* or *cost* attribute.
 - Units are provided for all quantitative indicators.
-- Environmental impact values are derived from Life Cycle Assessment (LCA) calculations performed using [OpenLCA](https://www.openlca.org) with the [ecoinvent database](https://ecoinvent.org) and some personal datas.
+- Environmental impact values are derived from Life Cycle Assessment (LCA) calculations performed using [openLCA](https://www.openlca.org) with the [ecoinvent database](https://ecoinvent.org) and some personal data.
 - Mechanical, physical, and cost data correspond to representative values reported in the literature and industrial datasheets.
 
 This sheet represents the raw input matrix used by both classical MCDM methods and the NSGA-II-based analysis.
