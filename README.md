@@ -18,7 +18,6 @@ All datasets, scripts, and figures required to reproduce the results presented i
 - [Installation](#installation)
 - [Usage](#usage)
 - [Generated Results](#generated-results)
-- [Reproducibility Notes](#reproducibility-notes)
 - [References](#references)
 
 ---
@@ -100,3 +99,8 @@ Clone the repository:
 ```bash
 git clone https://github.com/your-username/your-repository-name.git
 cd your-repository-name
+```
+## References
+
+If you use this work, please consider citing the following research papers in your references: (to update)
+
