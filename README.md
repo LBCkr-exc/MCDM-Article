@@ -18,7 +18,7 @@ All datasets, scripts, and figures required to reproduce the results presented i
 - [Usage](#usage)
 - [Generated Results](#generated-results)
 - [References](#references)
-
+- [Data Description](#data-description)
 ---
 
 ## Context
@@ -102,7 +102,7 @@ If you use this work, please consider citing the following research papers in yo
 
 
 
-## Data Description (Excel Workbook)
+## Data Description
 
 This repository includes an Excel workbook providing the complete input data used for the MCDM and NSGA-II analyses.  
 The file consolidates environmental, mechanical, physical, and economic indicators, as well as weighting schemes and ranking results, to ensure transparency and traceability of the decision process.
