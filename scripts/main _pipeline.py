@@ -737,3 +737,4 @@ plot_weight_heatmap_entropy_critic_nsga(
      "Elongation", "Flex Mod.", "Flex Str.", "CTE", "Cost"],
     OUTPUT_DIR
 )
+
