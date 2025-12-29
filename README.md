@@ -118,20 +118,20 @@ This sheet contains the core decision matrix used for MCDM analyses.
 **Content:**
 - List of candidate materials (alternatives)
 - Nine evaluation criteria:
-  - Environmental impact (single-score indicator) - the full environmental impacts are also available
-  - Density
-  - Tensile modulus
-  - Tensile strength
-  - Elongation at break
-  - Flexural modulus
-  - Flexural strength
-  - Coefficient of thermal expansion (CTE)
-  - Raw material cost
+  - Environmental impact (single-score indicator) (µpoints) - the full environmental impacts are also available
+  - Density (g/cm³)
+  - Tensile modulus(GPa)
+  - Tensile strength (MPa)
+  - Elongation at break (%)
+  - Flexural modulus (GPa)
+  - Flexural strength (MPa)
+  - Coefficient of thermal expansion (CTE) (µm/m·°C)
+  - Raw material cost (€/kg)
 
 **Additional information:**
 - Each criterion is explicitly classified as a *benefit* or *cost* attribute.
 - Units are provided for all quantitative indicators.
-- Environmental impact values are derived from Life Cycle Assessment (LCA) calculations performed using **openLCA** with mainly the **ecoinvent** database.
+- Environmental impact values are derived from Life Cycle Assessment (LCA) calculations performed using [OpenLCA](https://www.openlca.org) with the [ecoinvent database](https://ecoinvent.org) and some personal datas.
 - Mechanical, physical, and cost data correspond to representative values reported in the literature and industrial datasheets.
 
 This sheet represents the raw input matrix used by both classical MCDM methods and the NSGA-II-based analysis.
