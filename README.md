@@ -14,7 +14,6 @@ All datasets, scripts, and figures required to reproduce the results presented i
 - [Context](#context)
 - [Objectives](#objectives)
 - [Methodological Pipeline](#methodological-pipeline)
-- [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Generated Results](#generated-results)
@@ -68,9 +67,6 @@ The pipeline is structured into three main stages:
 - Compare NSGA-II and MCDM results through rankings and visualizations.
 
 ---
-
-## Technologies Used
-
 ### Programming Language
 - Python (>= 3.8)
 
