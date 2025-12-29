@@ -195,9 +195,9 @@ The Excel file includes multiple weighting strategies to reflect different decis
 - **CRITIC weights:** objective weights accounting for contrast intensity and inter-criteria correlation
 - **Randomised weights:** exploratory weights used to test ranking sensitivity
 - **Manual weights:** user-defined weights allowing interactive scenario analysis
-
 The sum of weights is explicitly controlled to ensure consistency across all analyses.
 The computation is made on masked sheets and the selection of the weighting method is possible on the toggle cell on the first sheet.
+
 ---
 
 ## Usage Notes
