@@ -100,3 +100,121 @@ cd your-repository-name
 
 If you use this work, please consider citing the following research papers in your references: (to update)
 
+
+
+## Data Description (Excel Workbook)
+
+This repository includes an Excel workbook providing the complete input data used for the MCDM and NSGA-II analyses.  
+The file consolidates environmental, mechanical, physical, and economic indicators, as well as weighting schemes and ranking results, to ensure transparency and traceability of the decision process.
+
+The workbook is organised into multiple sheets, each serving a specific purpose in the decision-support workflow.
+
+---
+
+### Sheet: `DATA`
+
+This sheet contains the core decision matrix used for MCDM analyses.
+
+**Content:**
+- List of candidate materials (alternatives)
+- Nine evaluation criteria:
+  - Environmental impact (single-score indicator)
+  - Density
+  - Tensile modulus
+  - Tensile strength
+  - Elongation at break
+  - Flexural modulus
+  - Flexural strength
+  - Coefficient of thermal expansion (CTE)
+  - Raw material cost
+
+**Additional information:**
+- Each criterion is explicitly classified as a *benefit* or *cost* attribute.
+- Units are provided for all quantitative indicators.
+- Environmental impact values are derived from Life Cycle Assessment (LCA) calculations performed using **openLCA** with the **ecoinvent** database.
+- Mechanical, physical, and cost data correspond to representative values reported in the literature and industrial datasheets.
+
+This sheet represents the raw input matrix used by both classical MCDM methods and the NSGA-II-based analysis.
+
+---
+
+### Sheet: `LCA Criteria`
+
+This sheet details the environmental assessment underlying the environmental impact indicator.
+
+**Content:**
+- Environmental impact metrics computed using LCA
+- Aggregated single-score values used in the decision matrix
+- Consistent system boundaries and assumptions across materials
+
+This sheet allows users to trace how environmental performance is integrated into the multi-criteria framework.
+
+---
+
+### Sheet: `Ranking & analysis`
+
+This sheet gathers the ranking results obtained from different weighting and decision strategies.
+
+**Content:**
+- Rankings produced using:
+  - Entropy-based weights
+  - CRITIC-based weights
+  - Randomised weighting schemes
+  - Manually defined (user-adjustable) weights
+- Comparison of rankings across methods
+- Identification of stable and divergent ranking patterns
+
+This sheet supports comparative analysis of decision outcomes under alternative weighting assumptions.
+
+---
+
+### Sheet: `raw ranking`
+
+This sheet contains the unprocessed ranking outputs directly resulting from the application of MCDM scoring methods.
+
+**Content:**
+- Raw scores and ranks before aggregation or interpretation
+- Method-specific ranking outputs
+
+It is primarily intended for transparency, verification, and sensitivity analysis.
+
+---
+
+### Sheet: `raw properties`
+
+This sheet reports the original material property values prior to any normalisation or transformation.
+
+**Content:**
+- Mechanical, physical, environmental, and economic indicators
+- Source-consistent values used to build the decision matrix
+
+This sheet enables full traceability from raw data to final rankings.
+
+---
+
+## Weighting Schemes
+
+The Excel file includes multiple weighting strategies to reflect different decision perspectives:
+
+- **Entropy weights:** objective weights derived from data dispersion
+- **CRITIC weights:** objective weights accounting for contrast intensity and inter-criteria correlation
+- **Randomised weights:** exploratory weights used to test ranking sensitivity
+- **Manual weights:** user-defined weights allowing interactive scenario analysis
+
+The sum of weights is explicitly controlled to ensure consistency across all analyses.
+
+---
+
+## Usage Notes
+
+- Users may modify manual weights directly in the Excel file to explore alternative decision scenarios.
+- Any change in weights or criteria values can be propagated to the Python scripts by exporting the updated tables as CSV files.
+- The Excel workbook is provided as a complementary, human-readable representation of the data and does not replace the scripted workflow.
+
+---
+
+## Data Transparency
+
+All data included in this workbook are intended to support reproducibility and methodological clarity.  
+Environmental impact values are based on established LCA tools and databases, while other indicators are sourced from the literature and industrial references cited in the associated paper.
+
