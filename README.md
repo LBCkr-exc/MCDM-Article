@@ -111,14 +111,14 @@ The workbook is organised into multiple sheets, each serving a specific purpose 
 
 ---
 
-### Sheet: `DATA`
+### Sheet: `MCDM_criteria_9.xlsx`
 
 This sheet contains the core decision matrix used for MCDM analyses.
 
 **Content:**
 - List of candidate materials (alternatives)
 - Nine evaluation criteria:
-  - Environmental impact (single-score indicator)
+  - Environmental impact (single-score indicator) - the full environmental impacts are also available
   - Density
   - Tensile modulus
   - Tensile strength
@@ -131,7 +131,7 @@ This sheet contains the core decision matrix used for MCDM analyses.
 **Additional information:**
 - Each criterion is explicitly classified as a *benefit* or *cost* attribute.
 - Units are provided for all quantitative indicators.
-- Environmental impact values are derived from Life Cycle Assessment (LCA) calculations performed using **openLCA** with the **ecoinvent** database.
+- Environmental impact values are derived from Life Cycle Assessment (LCA) calculations performed using **openLCA** with mainly the **ecoinvent** database.
 - Mechanical, physical, and cost data correspond to representative values reported in the literature and industrial datasheets.
 
 This sheet represents the raw input matrix used by both classical MCDM methods and the NSGA-II-based analysis.
@@ -146,8 +146,6 @@ This sheet details the environmental assessment underlying the environmental imp
 - Environmental impact metrics computed using LCA
 - Aggregated single-score values used in the decision matrix
 - Consistent system boundaries and assumptions across materials
-
-This sheet allows users to trace how environmental performance is integrated into the multi-criteria framework.
 
 ---
 
@@ -176,8 +174,6 @@ This sheet contains the unprocessed ranking outputs directly resulting from the 
 - Raw scores and ranks before aggregation or interpretation
 - Method-specific ranking outputs
 
-It is primarily intended for transparency, verification, and sensitivity analysis.
-
 ---
 
 ### Sheet: `raw properties`
@@ -188,7 +184,6 @@ This sheet reports the original material property values prior to any normalisat
 - Mechanical, physical, environmental, and economic indicators
 - Source-consistent values used to build the decision matrix
 
-This sheet enables full traceability from raw data to final rankings.
 
 ---
 
@@ -202,7 +197,7 @@ The Excel file includes multiple weighting strategies to reflect different decis
 - **Manual weights:** user-defined weights allowing interactive scenario analysis
 
 The sum of weights is explicitly controlled to ensure consistency across all analyses.
-
+The computation is made on masked sheets and the selection of the weighting method is possible on the toggle cell on the first sheet.
 ---
 
 ## Usage Notes
@@ -216,5 +211,5 @@ The sum of weights is explicitly controlled to ensure consistency across all ana
 ## Data Transparency
 
 All data included in this workbook are intended to support reproducibility and methodological clarity.  
-Environmental impact values are based on established LCA tools and databases, while other indicators are sourced from the literature and industrial references cited in the associated paper.
+Environmental impact values are based on established LCA tools and databases, while other indicators are sourced from the literature and industrial references.
 
