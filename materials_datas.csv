@@ -1,0 +1,8 @@
+﻿Materials;EF Single score;Density (g/cm³);Tensile Modulus (GPa);Tensile Strength (MPa);Elongation at break (%);Flexural modulus (GPa);Flexural strength (MPa);CTE (µm/m·°C);Raw material cost (€/kg)
+Flax/Epoxy;0,6;1,35;35,00;610,00;1,80;39,00;520,00;2,00E-05;3,80
+Carbon/Epoxy;5,0;1,42;120,00;2135,00;1,15;134,00;1815,00;2,98E-06;20,00
+Glass/Epoxy;0,7;1,80;40,00;1135,00;1,30;43,00;965,00;3,50E-05;4,00
+Aluminium template;1,6;2,70;70,00;330,00;3,40;70,00;325,00;2,30E-05;10,00
+Chromium steel template;0,8;7,9;200;750;40;200;900;1,70E-05;2,5
+Hemp/Epoxy;0,6;1,31;28;398;2;32;340;2,50E-05;4
+Jute/epoxy;0,6;1,3;12;335;2,5;13;285;3,00E-05;3
