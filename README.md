@@ -80,9 +80,9 @@ The pipeline is structured into three main stages:
 - pandas
 - matplotlib
 - seaborn
-- 
+```bash
 pip install numpy pandas matplotlib seaborn
-
+```
 ### Optimization and Decision-Making
 - NSGA-II (custom implementation)
 - Entropy weighting
