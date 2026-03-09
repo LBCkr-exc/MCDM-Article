@@ -218,7 +218,7 @@ Environmental impact values are based on established LCA tools and databases, wh
 
 ## Material Datasheets
 
-The following producer datasheets were used to source mechanical and physico-chemical property values for the decision matrix (Table 4 in the manuscript). Individual datasheet files are archived in the [`datasheets/`](datasheets/) folder of this repository to ensure full traceability and reproducibility.
+The following producer datasheets were used to source mechanical and physico-chemical property values for the decision matrix (Table 4 in the manuscript). Individual datasheet files are archived in the [`data/`](data/) folder of this repository to ensure full traceability and reproducibility.
 
 | Material | Full reference | File |
 |---|---|---|
