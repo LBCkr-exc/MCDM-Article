@@ -216,7 +216,13 @@ Environmental impact values are based on established LCA tools and databases, wh
 
 ---
 
-Material Datasheets
-The following producer datasheets were used to source mechanical and physico-chemical property values for the decision matrix (Table 4 in the manuscript). Individual datasheet files are archived in the datasheets/ folder of this repository to ensure full traceability and reproducibility.
-MaterialFull referenceFileFlax/Epoxy (UD)Eco-Technilin SAS. FLAXPREG T-UD 110 — Technical Data Sheet. Valliquerville, France, 2023.datasheets/EcoTechnilin_FLAXPREG_TUD110_2023.pdfCarbon/EpoxyHexcel Corporation. HexPly® M49 — 120°C Curing Epoxy Matrix, Product Data Sheet. Document ref. FTM-175-AG16. Stamford, CT, USA, 2016.datasheets/Hexcel_HexPly_M49_2016.pdfHemp/Epoxy, Jute/Epoxy, Glass/Epoxy, Aluminium alloy, Chromium tool steelTotalMateria database (Key to Metals AG), accessed March 2025. Property records available via institutional subscription at www.totalmateria.com.—
+## Material Datasheets
+
+The following producer datasheets were used to source mechanical and physico-chemical property values for the decision matrix (Table 4 in the manuscript). Individual datasheet files are archived in the [`datasheets/`](datasheets/) folder of this repository to ensure full traceability and reproducibility.
+
+| Material | Full reference | File |
+|---|---|---|
+| Flax/Epoxy (UD) | Eco-Technilin SAS. *FLAXPREG T-UD 110 — Technical Data Sheet*. Valliquerville, France, 2023. | [`data/FLAXPREG 110g UD Pre-Preg Flax TDF.pdf`](data/FLAXPREG 110g UD Pre-Preg Flax TDF.pdf) |
+| Carbon/Epoxy | Hexcel Corporation. *HexPly® M49 — 120°C Curing Epoxy Matrix, Product Data Sheet*. Document ref. FTM-175-AG16. Stamford, CT, USA, 2016. | [`data/HexPly_M49_eu_DataSheet.pdf`](data/HexPly_M49_eu_DataSheet.pdf) |
+| Hemp/Epoxy, Jute/Epoxy, Glass/Epoxy, Aluminium alloy, Chromium tool steel | TotalMateria database (Key to Metals AG), accessed March 2025. Property records available via institutional subscription at [www.totalmateria.com](https://www.totalmateria.com). | — |
 
