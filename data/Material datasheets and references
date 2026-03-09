@@ -1,0 +1,9 @@
+Material Datasheets
+The following producer datasheets were used to source mechanical and 
+physico-chemical property values for the decision matrix:
+
+| Material        | Source          | File |
+|-----------------|-----------------|------|
+| Flax/Epoxy (UD) | EcoTechnilin SAS, FLAXPREG T-UD 110, Technical Data Sheet, 2023 | `datasheets/EcoTechnilin_FLAXPREG_TUD110_2023.pdf` |
+| Carbon/Epoxy    | Hexcel Corporation, HexPly® M49 Product Data Sheet, rev. FTM-175-AG16, 2016 | `datasheets/Hexcel_HexPly_M49_2016.pdf` |
+| Hemp/Epoxy, Jute/Epoxy, Glass/Epoxy, Al, Steel | TotalMateria database, accessed [month year] | — |
