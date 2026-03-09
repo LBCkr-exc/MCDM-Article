@@ -222,7 +222,7 @@ The following producer datasheets were used to source mechanical and physico-che
 
 | Material | Full reference | File |
 |---|---|---|
-| Flax/Epoxy (UD) | Eco-Technilin SAS. *FLAXPREG T-UD 110 — Technical Data Sheet*. Valliquerville, France, 2023. | [`data/FLAXPREG 110g UD Pre-Preg Flax TDF.pdf`](data/FLAXPREG 110g UD Pre-Preg Flax TDS.pdf) |
+| Flax/Epoxy (UD) | Eco-Technilin SAS. *FLAXPREG T-UD 110 — Technical Data Sheet*. Valliquerville, France, 2023. | [`data/FLAXPREG_110g_UD_Pre-Preg_Flax_TDS.pdf`](data/FLAXPREG_110g_UD_Pre-Preg_Flax_TDS.pdf) |
 | Carbon/Epoxy | Hexcel Corporation. *HexPly® M49 — 120°C Curing Epoxy Matrix, Product Data Sheet*. Document ref. FTM-175-AG16. Stamford, CT, USA, 2016. | [`data/HexPly_M49_eu_DataSheet.pdf`](data/HexPly_M49_eu_DataSheet.pdf) |
 | Hemp/Epoxy, Jute/Epoxy, Glass/Epoxy, Aluminium alloy, Chromium tool steel | TotalMateria database (Key to Metals AG), accessed March 2025. Property records available via institutional subscription at [www.totalmateria.com](https://www.totalmateria.com). | — |
 
