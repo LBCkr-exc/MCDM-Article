@@ -214,3 +214,9 @@ The computation is made on masked sheets and the selection of the weighting meth
 All data included in this workbook are intended to support reproducibility and methodological clarity.  
 Environmental impact values are based on established LCA tools and databases, while other indicators are sourced from the literature and industrial references.
 
+---
+
+Material Datasheets
+The following producer datasheets were used to source mechanical and physico-chemical property values for the decision matrix (Table 4 in the manuscript). Individual datasheet files are archived in the datasheets/ folder of this repository to ensure full traceability and reproducibility.
+MaterialFull referenceFileFlax/Epoxy (UD)Eco-Technilin SAS. FLAXPREG T-UD 110 — Technical Data Sheet. Valliquerville, France, 2023.datasheets/EcoTechnilin_FLAXPREG_TUD110_2023.pdfCarbon/EpoxyHexcel Corporation. HexPly® M49 — 120°C Curing Epoxy Matrix, Product Data Sheet. Document ref. FTM-175-AG16. Stamford, CT, USA, 2016.datasheets/Hexcel_HexPly_M49_2016.pdfHemp/Epoxy, Jute/Epoxy, Glass/Epoxy, Aluminium alloy, Chromium tool steelTotalMateria database (Key to Metals AG), accessed March 2025. Property records available via institutional subscription at www.totalmateria.com.—
+
