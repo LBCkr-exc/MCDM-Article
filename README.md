@@ -247,7 +247,6 @@ Producer datasheets used to source mechanical and physico-chemical property valu
 
 If you use this work, please cite:
 
-> L. Becker, R. Grangeat, S. De Barros.
-> *Decision-support analytics for material selection for production tooling:
-> a systematic review and multi-objective optimisation of biocomposites.*
-> CESI LINEACT / eXcent France, 2025. *(to be updated upon publication)*
+> Authors to be updated upon publication.
+> *Decision-support analytics for material selection for production tooling: a systematic review and multi-objective optimisation of biocomposites*
+> Affiliations *(to be updated upon publication)*
