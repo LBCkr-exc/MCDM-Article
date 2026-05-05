@@ -1,228 +1,185 @@
-# NSGA-II and MCDM-Based Material Selection Framework
+# Decision-Support Analytics for Biocomposite Material Selection
 
-## Pipeline for Multi-Objective Optimization and Multi-Criteria Decision-Making
-
-This repository provides the full computational pipeline supporting the research paper  
-**"Decision-support analytics for material selection for production tooling: a systematic review and multi-objective optimisation of biocomposites"**.  
-It implements a transparent and reproducible framework combining **NSGA-II multi-objective optimization** with **multi-criteria decision-making (MCDM) methods** for material selection.
-
-All datasets, scripts, and figures required to reproduce the results presented in the paper are provided.
+> Systematic review and multi-objective optimisation framework for sustainable
+> material selection in production tooling applications.
 
 ---
 
-## Table of Contents
-- [Context](#context)
-- [Objectives](#objectives)
-- [Methodological Pipeline](#methodological-pipeline)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Generated Results](#generated-results)
-- [References](#references)
-- [Data Description](#data-description)
----
+## Methodological Workflow
 
-## Context
+The pipeline comprises **six reproducible steps**. Steps 1–4 run sequentially;
+Step 5 branches into two parallel analyses that converge at Step 6.
 
-Material selection for engineering applications is a multi-objective and multi-criteria problem involving trade-offs between performance, robustness, cost, environmental & social impact.
+```mermaid
+flowchart TD
+    S1["**Step 1. Data compilation and pre-screening**\nTraceable sources · literature ranges for natural-fibre composites"]
+    S2["**Step 2. Criteria normalisation**\nMin-max scaling · validated against vector normalisation and z-score"]
+    S3["**Step 3. Objective weighting**\nShannon entropy and CRITIC · intercriteria correlation analysis"]
+    S4["**Step 4. Baseline MCDM ranking**\nTOPSIS · VIKOR · ARAS across 2 weight schemes (6 scenarios)"]
+    S5A["**Step 5a. Local sensitivity**\nWeight perturbation in simplex\nSpearman and Kendall rank corr.\nMonte Carlo CV=10%, N=5,000"]
+    S5B["**Step 5b. NSGA-II exploration**\nTri-objective: f₁, f₂, f₃\nN=160 solutions · G=200 generations\nSoftmax weight encoding"]
+    S6["**Step 6. Comparative analysis**\nMCDM projections onto Pareto manifold\nRegime mapping and robustness assessment"]
+    OUT[/"**Decision support output**\nMaterial rankings · Pareto profiles · decision regime map"/]
 
-In this work:
-- NSGA-II is used to explore the Pareto-optimal space of weighting strategies.
-- Classical MCDM methods (TOPSIS, VIKOR, ARAS) and weighting method (Entropy, CRITIC) are applied for ranking.
+    S1 --> S2 --> S3 --> S4
+    S4 --> |parallel analyses| S5A
+    S4 --> |parallel analyses| S5B
+    S5A --> |integration| S6
+    S5B --> |integration| S6
+    S6 --> OUT
 
----
-
-## Objectives
-
-1. Provide a reproducible NSGA-II optimization pipeline.
-2. Compare NSGA-II reference solutions with MCDM-based rankings.
-3. Ensure open and transparent access to all data and scripts.
-4. Enable verification, reuse, and extension of the proposed methodology.
-
----
-
-## Methodological Pipeline
-
-The pipeline is structured into three main stages:
-
-### 1. Data Processing and Normalization
-- Load material property data from CSV files.
-- Apply benefit/cost normalization to all criteria.
-- Ensure robust matching between datasets and ranking tables.
-
-### 2. NSGA-II Multi-Objective Optimization
-- Generate Pareto-optimal weight vectors.
-- Optimize three objectives:
-  - f1: maximization of overall material score
-  - f2: robustness (minimum score)
-  - f3: weight balance (imbalance minimization)
-- Identify representative NSGA-II solutions:
-  - Knee solution
-  - Balanced solution
-  - Robust solution
-
-### 3. MCDM Evaluation and Comparison
-- Compute Entropy and CRITIC-based weights.
-- Apply TOPSIS, VIKOR, and ARAS methods.
-- Integrate user-provided MCDM rankings.
-- Compare NSGA-II and MCDM results through rankings and visualizations.
-
----
-### Programming Language
-- Python (>= 3.8)
-
-### Scientific Libraries
-- numpy
-- pandas
-- matplotlib
-- seaborn
-```bash
-pip install numpy pandas matplotlib seaborn
+    style S1  fill:#E1F5EE,stroke:#0F6E56,color:#085041
+    style S2  fill:#E1F5EE,stroke:#0F6E56,color:#085041
+    style S3  fill:#E1F5EE,stroke:#0F6E56,color:#085041
+    style S4  fill:#E1F5EE,stroke:#0F6E56,color:#085041
+    style S5A fill:#EEEDFE,stroke:#534AB7,color:#3C3489
+    style S5B fill:#FAECE7,stroke:#993C1D,color:#712B13
+    style S6  fill:#FAEEDA,stroke:#854F0B,color:#633806
+    style OUT fill:#F1EFE8,stroke:#5F5E5A,color:#444441
 ```
-### Optimization and Decision-Making
-- NSGA-II (custom implementation)
-- Entropy weighting
-- CRITIC weighting
-- TOPSIS
-- VIKOR
-- ARAS
 
 ---
 
-## Installation
+## Step-by-Step Description
 
-Clone the repository:
+### Step 1 — Data compilation and pre-screening
+A raw decision matrix is assembled for **7 candidate materials** evaluated
+across **9 heterogeneous criteria** covering environmental, mechanical,
+physico-chemical, and economic domains. Data sources are documented with
+traceable references; literature ranges are reported for natural-fibre
+composites to contextualise point estimates within known experimental
+envelopes.
 
-```bash
-git clone https://github.com/your-username/your-repository-name.git
-cd your-repository-name
+**Materials:** Flax/Ep · Hemp/Ep · Jute/Ep · Carbon/Ep · Glass/Ep ·
+Aluminium alloy · Chromium tool steel
+
+**Criteria:** EF single score · density · tensile modulus · tensile strength ·
+elongation at break · flexural modulus · flexural strength · CTE ·
+raw material cost
+
+---
+
+### Step 2 — Criteria normalisation
+Raw values are mapped to a common [0, 1] scale using a monotone min-max
+transformation that preserves relative performance while eliminating
+dimensional inconsistencies. The procedure is validated against vector
+normalisation and z-score standardisation; all three schemes yield identical
+ordinal rankings (Spearman ρ = 1.000, p < 0.001).
+
+---
+
+### Step 3 — Objective weighting
+Two data-driven weighting techniques are applied:
+
+| Method | Principle |
+|--------|-----------|
+| **Shannon entropy** | Captures discriminative dispersion across alternatives |
+| **CRITIC** | Penalises redundancy among correlated criteria; up-weights orthogonal information |
+
+Their combined use provides complementary perspectives without requiring
+subjective elicitation. CRITIC amplifies the CTE weight by a factor of 7.6
+relative to entropy, reflecting its low correlation with the mechanical block.
+
+---
+
+### Step 4 — Baseline MCDM ranking
+Three aggregation methods with distinct axiomatic structures are applied under
+each weighting scheme, producing **6 classical ranking scenarios**:
+
+| Method | Aggregation logic |
+|--------|------------------|
+| **TOPSIS** | Distance to ideal and anti-ideal solution |
+| **VIKOR** | Compromise programming, group utility and individual regret |
+| **ARAS** | Additive ratio assessment relative to an idealised reference |
+
+---
+
+### Step 5a — Local sensitivity analysis
+Rank stability is assessed through two complementary analyses:
+
+- **Weight perturbation:** each baseline weight vector is perturbed within the
+  weight simplex; TOPSIS, VIKOR, and ARAS rankings are recomputed and
+  stability is quantified via Spearman ρ and Kendall τ.
+- **Monte Carlo criteria uncertainty:** N = 5,000 runs at CV = 10%
+  multiplicative noise propagated through the full TOPSIS pipeline.
+
+---
+
+### Step 5b — Global weight-space exploration via NSGA-II
+An evolutionary multi-objective optimisation is performed directly in the
+weight simplex to recover the full trade-off structure of the decision problem.
+Three conflicting objectives are optimised simultaneously:
+
+| Objective | Definition |
+|-----------|-----------|
+| f₁ | Maximal achievable material performance score |
+| f₂ | Worst-case robustness (minimum material score) |
+| f₃ | Weight balance (negative deviation from uniform weights) |
+
+**Algorithm settings:** population N = 160 · generations G = 200 ·
+softmax weight encoding · Gaussian mutation σ = 0.1 · fixed seed = 9
+
+The resulting Pareto front contains 160 non-dominated weighting
+configurations spanning performance-maximising, compromise, and
+robustness-oriented decision regimes.
+
+---
+
+### Step 6 — Comparative analysis
+Classical MCDM weight vectors are projected onto the NSGA-II Pareto manifold.
+This produces a topological map revealing which decision regimes each method
+implicitly occupies and which regimes it structurally cannot access. Three
+representative Pareto solutions (knee, balanced, robust) are extracted and
+compared directly to TOPSIS, VIKOR, and ARAS outputs.
+
+---
+
+## Repository Structure
+
 ```
-## References
-
-If you use this work, please consider citing the following research papers in your references: (to update)
-
-
-
-## Data Description
-
-This repository includes an Excel workbook providing the complete input data used for the MCDM and NSGA-II analyses.  
-The file consolidates environmental, mechanical, physical, and economic indicators, as well as weighting schemes and ranking results, to ensure transparency and traceability of the decision process.
-
-The workbook is organised into multiple sheets, each serving a specific purpose in the decision-support workflow.
+.
+├── build_database.py       # SQLite schema — 7 materials, 9 criteria
+├── data_layer.py           # Database access and screening utilities
+├── engine.py               # MCDM methods and NSGA-II (stateless)
+├── api.py                  # Orchestrator
+├── add_data.py             # CLI utility for data entry
+├── test_reproductibility.py # Reproducibility test suite (47/47 pass)
+└── materials.db            # SQLite database
+```
 
 ---
 
-### Sheet: `MCDM_criteria_9.xlsx`
+## Reproducibility
 
-This sheet contains the core decision matrix used for MCDM analyses.
+All results are fully reproducible from a fixed random seed (seed = 9).
+The complete decision matrix, weight vectors, ranking scores, and
+optimisation outputs are provided in the Data Availability section of the
+companion manuscript.
 
-**Content:**
-- List of candidate materials (alternatives)
-- Nine evaluation criteria:
-  - Environmental impact (single-score indicator) (µpoints) - the full environmental impacts are also available
-  - Density (g/cm³)
-  - Tensile modulus(GPa)
-  - Tensile strength (MPa)
-  - Elongation at break (%)
-  - Flexural modulus (GPa)
-  - Flexural strength (MPa)
-  - Coefficient of thermal expansion (CTE) (µm/m·°C)
-  - Raw material cost (€/kg)
+To replicate the NSGA-II run:
 
-**Additional information:**
-- Each criterion is explicitly classified as a *benefit* or *cost* attribute.
-- Units are provided for all quantitative indicators.
-- Environmental impact values are derived from Life Cycle Assessment (LCA) calculations performed using [openLCA](https://www.openlca.org) with the [ecoinvent database](https://ecoinvent.org) and some personal data.
-- Mechanical, physical, and cost data correspond to representative values reported in the literature and industrial datasheets.
-
-This sheet represents the raw input matrix used by both classical MCDM methods and the NSGA-II-based analysis.
+```python
+from engine import run_nsga2
+results = run_nsga2(seed=9, pop_size=160, n_gen=200)
+```
 
 ---
 
-### Sheet: `LCA Criteria`
+## Dependencies
 
-This sheet details the environmental assessment underlying the environmental impact indicator.
-
-**Content:**
-- Environmental impact metrics computed using LCA
-- Aggregated single-score values used in the decision matrix
-- Consistent system boundaries and assumptions across materials
-
----
-
-### Sheet: `Ranking & analysis`
-
-This sheet gathers the ranking results obtained from different weighting and decision strategies.
-
-**Content:**
-- Rankings produced using:
-  - Entropy-based weights
-  - CRITIC-based weights
-  - Randomised weighting schemes
-  - Manually defined (user-adjustable) weights
-- Comparison of rankings across methods
-- Identification of stable and divergent ranking patterns
-
-This sheet supports comparative analysis of decision outcomes under alternative weighting assumptions.
+```
+python >= 3.9
+numpy
+scipy
+pymoo        # NSGA-II
+sqlite3      # standard library
+```
 
 ---
 
-### Sheet: `raw ranking`
+## Reference
 
-This sheet contains the unprocessed ranking outputs directly resulting from the application of MCDM scoring methods.
-
-**Content:**
-- Raw scores and ranks before aggregation or interpretation
-- Method-specific ranking outputs
-
----
-
-### Sheet: `raw properties`
-
-This sheet reports the original material property values prior to any normalisation or transformation.
-
-**Content:**
-- Mechanical, physical, environmental, and economic indicators
-- Source-consistent values used to build the decision matrix
-
-
----
-
-## Weighting Schemes
-
-The Excel file includes multiple weighting strategies to reflect different decision perspectives:
-
-- **Entropy weights:** objective weights derived from data dispersion
-- **CRITIC weights:** objective weights accounting for contrast intensity and inter-criteria correlation
-- **Randomised weights:** exploratory weights used to test ranking sensitivity
-- **Manual weights:** user-defined weights allowing interactive scenario analysis
-  
-The sum of weights is explicitly controlled to ensure consistency across all analyses.
-The computation is made on masked sheets and the selection of the weighting method is possible on the toggle cell on the first sheet.
-
----
-
-## Usage Notes
-
-- Users may modify manual weights directly in the Excel file to explore alternative decision scenarios.
-- Any change in weights or criteria values can be propagated to the Python scripts by exporting the updated tables as CSV files.
-- The Excel workbook is provided as a complementary, human-readable representation of the data and does not replace the scripted workflow.
-
----
-
-## Data Transparency
-
-All data included in this workbook are intended to support reproducibility and methodological clarity.  
-Environmental impact values are based on established LCA tools and databases, while other indicators are sourced from the literature and industrial references.
-
----
-
-## Material Datasheets
-
-The following producer datasheets were used to source mechanical and physico-chemical property values for the decision matrix (Table 4 in the manuscript). Individual datasheet files are archived in the [`data/`](data/) folder of this repository to ensure full traceability and reproducibility.
-
-| Material | Full reference | File |
-|---|---|---|
-| Flax/Epoxy (UD) | Eco-Technilin SAS. *FLAXPREG T-UD 110 — Technical Data Sheet*. Valliquerville, France, 2023. | [`data/FLAXPREG_110g_UD_Pre-Preg_Flax_TDS.pdf`](data/FLAXPREG_110g_UD_Pre-Preg_Flax_TDS.pdf) |
-| Carbon/Epoxy | Hexcel Corporation. *HexPly® M49 — 120°C Curing Epoxy Matrix, Product Data Sheet*. Document ref. FTM-175-AG16. Stamford, CT, USA, 2016. | [`data/HexPly_M49_eu_DataSheet.pdf`](data/HexPly_M49_eu_DataSheet.pdf) |
-| Hemp/Epoxy, Jute/Epoxy, Glass/Epoxy, Aluminium alloy, Chromium tool steel | TotalMateria database (Key to Metals AG). Property records available via institutional subscription at [www.totalmateria.com](https://www.totalmateria.com). | — |
-
+> L. Becker, R. Grangeat, S. De Barros.
+> *Decision-support analytics for material selection for production tooling:
+> a systematic review and multi-objective optimisation of biocomposites.*
+> CESI LINEACT / eXcent France, 2025.
