@@ -20,7 +20,7 @@ All datasets, scripts, and figures required to reproduce the results presented i
 - [Repository Structure](#repository-structure)
 - [Data Description](#data-description)
 - [Material Datasheets](#material-datasheets)
-- [References](#To cite this work)
+- [References](#To cite this work :)
 
 ---
 
