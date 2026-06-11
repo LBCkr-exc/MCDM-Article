@@ -20,7 +20,7 @@ All datasets, scripts, and figures required to reproduce the results presented i
 - [Repository Structure](#repository-structure)
 - [Data Description](#data-description)
 - [Material Datasheets](#material-datasheets)
-- [References](#references)
+- [References](#To cite this work)
 
 ---
 
@@ -263,3 +263,7 @@ author = {Lilian Becker and Ahmed Nait Chabane and Pierre Hémono and Romain Gra
 keywords = {Decision support, Robust decision making, Multi-criteria decision-making (MCDM), Biocomposites, Sustainability assessment, Life cycle assessment (LCA)},
 abstract = {Biocomposites are increasingly promoted as sustainable substitutes for conventional composites, yet material selection remains uncertain because existing studies rely on heterogeneous datasets, inconsistent sustainability indicators, and divergent decision models. This paper addresses this gap by combining a systematic literature review with an auditable decision-support workflow for sustainable biocomposite selection, retaining 58 primary studies. The synthesis shows a strong criteria imbalance: mechanical indicators represent 63.9% of criteria in reviewed decision models, whereas environmental and manufacturing indicators account for 2.0% and 0.7%, respectively; social aspects are usually discussed qualitatively rather than embedded as decision criteria. These findings indicate that sustainability is frequently stated as a motivation but seldom operationalised at the decision stage. To move beyond fixed-weight rankings, we develop a two-layer workflow for production engineering applications, such as tooling, explicitly linking material choice to manufacturing trade-offs including robustness and operational risk. Classical fixed-weight MCDM solutions are benchmarked against an NSGA-II exploration of the weight space, revealing robustness and ranking sensitivity under uncertainty beyond what standard MCDM can capture. The optimisation generates a Pareto set of decision profiles that trade off best-achievable utility, worst-case performance, and balance in weight allocation, supporting robustness-aware and sustainability-informed material selection.}
 }
+
+# License
+User License
+CC BY 4.0
