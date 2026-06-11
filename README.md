@@ -243,11 +243,11 @@ Producer datasheets used to source mechanical and physico-chemical property valu
 
 ---
 
-## References
+## To cite this work :
 
 If you use the data, code, or methodology provided in this repository, please cite the following publication:
 
-Becker, L., Nait Chabane, A., Hémono, P., Grangeat, R., & De Barros, S. (2026). Decision-support analytics for material selection for production tooling: A systematic review and multi-objective optimisation of biocomposites. Cleaner Environmental Systems, 100456. https://doi.org/10.1016/j.cesys.2026.100456
+**Becker, L., Nait Chabane, A., Hémono, P., Grangeat, R., & De Barros, S.** (2026). Decision-support analytics for material selection for production tooling: A systematic review and multi-objective optimisation of biocomposites. Cleaner Environmental Systems, 100456. https://doi.org/10.1016/j.cesys.2026.100456
 
 BibTeX :
 
